@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import axios from "axios";
+import { useEffect } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  useEffect(() => {
+    axios
+      .post("http://3.38.191.164/register", {
+        id: "idddd",
+        password: "1234567",
+      })
+      .then(() => {
+        console.log("회원가입 성공");
+      })
+      .catch((err) => {
+        console.log("err:", err);
+      });
+  }, []);
+  return <div>테스트</div>;
 }
 
 export default App;
